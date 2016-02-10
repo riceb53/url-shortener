@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+File.open.each_line do |line|
+  line.chomp!
+  Shortener::ShortenedUrl.generate(line)
+end
