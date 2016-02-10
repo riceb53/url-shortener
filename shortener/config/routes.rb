@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-  get '/:id' => "shortener/shortened_urls#show"
+  get '/' => 'welcome#index' # 'homepage'
+  get '/urls/:unique_key' => 'shortened_urls#index' #will make a new shortened url and return json
+  get '/index/:unique_key' => "shortened_urls#index" #shows the json info about a particular shortened url including count (input is shortened url)
+  get '/:id' => "shortener/shortened_urls#show" # redirects to the original long url
 
 
   # You can have the root of your site routed with "root"
