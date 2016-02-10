@@ -6,7 +6,7 @@ class ShortenedUrlsController < ApplicationController
     p "URLURL"
     p @url
     @url.use_count += 1
-    redirect_to "http:/#{@url.url}.com"
+    redirect_to "http:/#{@url.url}.com" # param truncates after '.' so I hardcoded. Not able to do .org, etc.
   end
 
   def new
