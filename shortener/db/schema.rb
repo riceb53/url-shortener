@@ -14,13 +14,17 @@
 ActiveRecord::Schema.define(version: 20160210212748) do
 
   create_table "shortened_urls", force: :cascade do |t|
+    t.integer  "owner_id"
+    t.string   "owner_type", limit: 20
     t.text     "url",                               null: false
     t.string   "unique_key", limit: 10,             null: false
     t.integer  "use_count",             default: 0, null: false
+    t.datetime "expires_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "shortened_urls", ["owner_id", "owner_type"], name: "index_shortened_urls_on_owner_id_and_owner_type"
   add_index "shortened_urls", ["unique_key"], name: "index_shortened_urls_on_unique_key", unique: true
   add_index "shortened_urls", ["url"], name: "index_shortened_urls_on_url"
 
